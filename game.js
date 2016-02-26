@@ -15,7 +15,7 @@ var grid = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 ]
 
-
+var future_grid = []
 
 function seed_board () {
     for (var i = 0; i < STARTING_LIFE; i ++) {
@@ -27,18 +27,10 @@ function print_board () {
   console.log(grid)
 }
 
-x y
-[1][1]
-[0,0] x-1, y-1
-[0,1] x-1, y
-[0,2] x-1, y+1
-[1][0] x, y-1
-[1][2]x, y+1
-[2][0]x+1, y-1
-[2][1]x+1, y
-[2][2]x+1, y+1
 
-function check_neighbors (grid,outer, inner) {
+
+
+function check_neighbors (grid,outer,inner) {
     var live_neighbor_count = 0
     if (grid[outer - 1][inner-1] == 1){
         live_neighbor_count += 1
@@ -66,4 +58,16 @@ function check_neighbors (grid,outer, inner) {
     }
     return live_neighbor_count
 }
+
+function live_or_die(grid, outer, inner) {
+    if (check_neighbors(grid,[outer][inner]) >= 3) {
+       future_grid[outer][inner] == 1
+    }
+}
+
+//DRIVER TEST CODE
+seed_board()
+print_board()
+console.log(check_neighbors(grid, 1,2))
+
 
