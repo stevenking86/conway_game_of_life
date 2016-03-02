@@ -43,25 +43,61 @@ function print_future_board() {
 }
 
 
+function is_upper(outer){
+    if (outer === 0){
+        return true
+    }
+}
+
+function is_downer(outer){
+    if (outer == 10){
+        return true
+    }
+}
+
+function is_righty(inner){
+    if (inner == 19){
+        return true
+    }
+}
+
+function is_lefty(inner){
+    if (inner === 0){
+        return true
+    }
+}
+
+
 
 
 function check_neighbors (grid,outer,inner) {
     var live_neighbor_count = 0
-    if (grid[outer - 1][inner-1] === 1){
-        live_neighbor_count += 1
+
+ //Still problems with this. But way better than before.
+
+    if (is_upper(outer) == false){
+        if (grid[outer - 1][inner-1] === 1){
+            live_neighbor_count += 1
+        }
+        if (grid[outer - 1][inner] === 1){
+            live_neighbor_count += 1
+        }
+        if (grid[outer - 1][inner+1] === 1){
+            live_neighbor_count += 1
+        }
+
+        //don't do if left side
+        if (grid[outer][inner-1] === 1){
+            live_neighbor_count += 1
+        }
     }
-    if (grid[outer - 1][inner] === 1){
-        live_neighbor_count += 1
-    }
-    if (grid[outer - 1][inner+1] === 1){
-        live_neighbor_count += 1
-    }
-    if (grid[outer][inner-1] === 1){
-        live_neighbor_count += 1
-    }
+
+    //don't do if right side
     if (grid[outer][inner+1] === 1){
         live_neighbor_count += 1
     }
+
+    //don't do if downer
     if (grid[outer + 1][inner-1] === 1){
         live_neighbor_count += 1
     }
