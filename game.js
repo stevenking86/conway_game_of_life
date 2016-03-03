@@ -131,13 +131,11 @@ function check_neighbors (grid,outer,inner) {
 }
 
 function live_or_die(grid, outer, inner) {
-    if (check_neighbors(grid,outer,inner) >= 3) {
+    if (check_neighbors(grid,outer,inner) == 3 || check_neighbors(grid,outer,inner)==2 ) {
        future_grid[outer][inner] = 1
-   //    console.log("LIVE")
     }
     else {
         future_grid[outer][inner] = 0
-  //      console.log("DEAD")
     }
 }
 
@@ -148,13 +146,12 @@ function check_all_cells (grid){
             live_or_die(grid, i, j)
         }
     }
+    console.log("")
+    console.log(future_grid)
+    check_all_cells(future_grid)
 }
 
 //DRIVER TEST CODE
 seed_board()
-print_board()
-// console.log(check_neighbors(grid, 1,2))
-// live_or_die(grid,1,2)
 check_all_cells(grid)
-console.log("")
-console.log(future_grid)
+//console.log(future_grid)
