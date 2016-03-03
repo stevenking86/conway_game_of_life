@@ -1,4 +1,4 @@
-var STARTING_LIFE = 78
+var STARTING_LIFE = 100
 
 
 
@@ -131,7 +131,7 @@ function check_neighbors (grid,outer,inner) {
 }
 
 function live_or_die(grid, outer, inner) {
-    if (check_neighbors(grid,outer,inner) == 3 || check_neighbors(grid,outer,inner)==2 ) {
+    if (check_neighbors(grid,outer,inner) == 3) {
        future_grid[outer][inner] = 1
     }
     else {
