@@ -73,39 +73,50 @@ function is_lefty(inner){
 function check_neighbors (grid,outer,inner) {
     var live_neighbor_count = 0
 
- //Still problems with this. But way better than before.
 
-    if (is_upper(outer) == false){
+
+    if (is_upper(outer) === false && is_lefty(inner)=== false){
         if (grid[outer - 1][inner-1] === 1){
             live_neighbor_count += 1
         }
+    }
+    if (is_upper(outer)===false){
         if (grid[outer - 1][inner] === 1){
             live_neighbor_count += 1
         }
+    }
+    if (is_upper(outer) === false && is_righty(inner) === false){
         if (grid[outer - 1][inner+1] === 1){
             live_neighbor_count += 1
         }
+    }
 
-        //don't do if left side
+    if (is_lefty(inner)===false){
         if (grid[outer][inner-1] === 1){
             live_neighbor_count += 1
         }
     }
 
-    //don't do if right side
-    if (grid[outer][inner+1] === 1){
-        live_neighbor_count += 1
+    if (is_righty(inner)===false){
+        if (grid[outer][inner+1] === 1){
+            live_neighbor_count += 1
+        }
     }
 
-    //don't do if downer
-    if (grid[outer + 1][inner-1] === 1){
-        live_neighbor_count += 1
+    if (is_downer(outer)===false && is_lefty(inner) === false){
+        if (grid[outer + 1][inner-1] === 1){
+            live_neighbor_count += 1
+        }
     }
-    if (grid[outer + 1][inner] === 1){
-        live_neighbor_count += 1
+    if (is_downer(outer)===false){
+        if (grid[outer + 1][inner] === 1){
+            live_neighbor_count += 1
+        }
     }
-    if (grid[outer + 1][inner+1] === 1){
-        live_neighbor_count += 1
+    if (is_downer(outer)===false && is_righty(inner)===false){
+        if (grid[outer + 1][inner+1] === 1){
+            live_neighbor_count += 1
+        }
     }
     return live_neighbor_count
 }
@@ -127,6 +138,7 @@ function check_all_cells (grid){
     for (var i = 0; i < grid.length; i++) {
         for (var j = 0; j < grid[i].length; j++){
           new_grid = live_or_die(grid, i, j)
+          console.log("GOT HERE")
         }
     }
   console.log(new_grid)
