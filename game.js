@@ -133,13 +133,12 @@ function check_neighbors (grid,outer,inner) {
 function live_or_die(grid, outer, inner) {
     if (check_neighbors(grid,outer,inner) >= 3) {
        future_grid[outer][inner] = 1
-       console.log("LIVE")
+   //    console.log("LIVE")
     }
     else {
         future_grid[outer][inner] = 0
-        console.log("DEAD")
+  //      console.log("DEAD")
     }
-
 }
 
 function check_all_cells (grid){
@@ -157,4 +156,5 @@ print_board()
 // console.log(check_neighbors(grid, 1,2))
 // live_or_die(grid,1,2)
 check_all_cells(grid)
-print_future_board
+console.log("")
+console.log(future_grid)
