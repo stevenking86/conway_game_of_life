@@ -9,7 +9,6 @@ Game.prototype.stringToGrid= function(boardString){
   grid = []
   board_arr = boardString.split("")
   grid = [board_arr.slice(0,5),board_arr.slice(5,10),board_arr.slice(10,15),board_arr.slice(15,20),board_arr.slice(20,25)]
-  console.log(grid)
   return grid
 }
 

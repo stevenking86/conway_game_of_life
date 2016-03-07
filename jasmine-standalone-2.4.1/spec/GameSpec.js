@@ -1,6 +1,7 @@
 describe("Game", function() {
-  it("does stuff", function() {
-    expect(true).toEqual(true);
+  it("makes an array from string upon creation", function() {
+    g = new Game("1234512345123451234512345")
+    expect(g.grid).toEqual([["1","2","3","4","5"],["1","2","3","4","5"],["1","2","3","4","5"],["1","2","3","4","5"],["1","2","3","4","5"]]);
   })
 })
 
