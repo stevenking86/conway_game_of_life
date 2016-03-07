@@ -8,9 +8,9 @@ var grid = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 ]
@@ -30,7 +30,7 @@ var future_grid = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 
 function seed_board () {
     for (var i = 0; i < STARTING_LIFE; i ++) {
-        grid[Math.floor(Math.random()*11)][Math.floor(Math.random()*20)] = 1
+        grid[Math.floor(Math.random()*grid.length)][Math.floor(Math.random()*grid[0].length)] = 1
     }
 }
 
@@ -53,7 +53,7 @@ function is_upper(outer){
 }
 
 function is_downer(outer){
-    if (outer == 10){
+    if (outer == grid.length - 1){
         return true
     }
     else {
@@ -62,7 +62,7 @@ function is_downer(outer){
 }
 
 function is_righty(inner){
-    if (inner == 19){
+    if (inner == grid[0].length - 1){
         return true
     }
     else {
@@ -146,6 +146,7 @@ function check_all_cells (grid){
             live_or_die(grid, i, j)
         }
     }
+<<<<<<< HEAD
     console.log("")
     console.log(future_grid)
     check_all_cells(future_grid)
@@ -155,3 +156,32 @@ function check_all_cells (grid){
 seed_board()
 check_all_cells(grid)
 //console.log(future_grid)
+=======
+    prettyPrint(future_grid);
+    console.log("")
+    // console.log(future_grid)
+    // check_all_cells(future_grid)
+}
+
+function prettyPrint(grid) {
+  console.log(grid.map(function(row) { return row.join(" ") }).join("\n"))
+}
+
+//DRIVER TEST CODE
+// seed_board()
+// check_all_cells(grid)
+//console.log(future_grid)
+
+function Game(grid) {
+  this.grid = this.stringToGrid(grid);
+  this.futureGrid = grid;
+}
+
+Game.prototype.gridToString = function(grid) {
+  return string // 1D string representation of nested array
+}
+
+Game.prototype.stringToGrid = function(string) {
+  return grid // nested array
+}
+>>>>>>> samhelp
