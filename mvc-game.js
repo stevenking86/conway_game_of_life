@@ -12,6 +12,11 @@ Game.prototype.stringToGrid= function(boardString){
   return grid
 }
 
+game.prototype.gridToString = function(grid) {
+  self.grid
+
+}
+
 Game.prototype.nextLifeCycle = function() {
 
 }
